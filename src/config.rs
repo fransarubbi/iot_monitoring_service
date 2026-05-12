@@ -8,10 +8,10 @@ pub struct Config {
 }
 
 pub fn load_config() -> Result<Config> {
-    dotenv().ok(); // Ignora el error si no hay archivo .env, usa las del sistema
+    dotenv().ok(); 
 
     Ok(Config {
-        manager_db_url: env::var("MANAGER_DB_URL").context("Falta MANAGER_DB_URL")?,
-        datasaver_db_url: env::var("DATASAVER_DB_URL").context("Falta DATASAVER_DB_URL")?,
+        manager_db_url: env::var("MANAGER_DB_URL").context("Error: falta MANAGER_DB_URL en .env")?,
+        datasaver_db_url: env::var("DATASAVER_DB_URL").context("Error: falta DATASAVER_DB_URL en .env")?,
     })
 }
